@@ -14,56 +14,56 @@ project is best option
 
 ### Overview Page
 
-![Project page](./readme-images/1.png)
+![Project page](1.png)
 
 ### Accounts Page
 
-![Project page](./readme-images/2.png)
+![Project page](2.png)
 
 ### Singal Account Details Page Drawer
 
-![Project page](./readme-images/3.png)
+![Project page](3.png)
 
 ### Withdrawals Page
 
-![Project page](./readme-images/4.png)
+![Project page](4.png)
 
 ### Singal Withdrawal Details Drawer
 
-![Project page](./readme-images/6.png)
+![Project page](6.png)
 
 ### Purchases Page
 
-![Project page](./readme-images/5.png)
+![Project page](5.png)
 
 ### Singal Purchase Details Drawer
 
-![Project page](./readme-images/7.png)
+![Project page](7.png)
 
 ### And / Update Product Details Drawer
 
-![Project page](./readme-images/11.png)
+![Project page](11.png)
 
 ### Fundings Page
 
-![Project page](./readme-images/12.png)
+![Project page](12.png)
 
 ### Singal Fundings Details Drawer
 
-![Project page](./readme-images/13.png)
+![Project page](13.png)
 
 ### Settings Page
 
-![Project page](./readme-images/14.png)
+![Project page](14.png)
 
 ### Update Setting Page
 
-![Project page](./readme-images/15.png)
+![Project page](15.png)
 
 ### New Admin Page
 
-![Project page](./readme-images/16.png)
+![Project page](16.png)
 
 ### Login Page
 
-![Project page](./readme-images/17.png)
+![Project page](17.png)
