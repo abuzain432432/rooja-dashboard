@@ -18,6 +18,7 @@ project is best option
 
 ### Accounts Page
 
+<!--
 ![Project page](2.png)
 
 ### Singal Account Details Page Drawer
@@ -66,4 +67,4 @@ project is best option
 
 ### Login Page
 
-![Project page](17.png)
+![Project page](17.png) -->
