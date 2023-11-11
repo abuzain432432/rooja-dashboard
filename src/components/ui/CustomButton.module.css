@@ -1,0 +1,15 @@
+.customButton {
+  background-color: var(--green-custom-700) !important;
+  color: white;
+  /* text-transform: uppercase; */
+}
+.customButton:hover {
+  border-color: var(--green-custom-700) !important;
+  color: white !important;
+}
+.grayButton {
+  background-color: var(--main-color-100) !important;
+}
+.redButton {
+  background-color: var(--red-color-500) !important;
+}

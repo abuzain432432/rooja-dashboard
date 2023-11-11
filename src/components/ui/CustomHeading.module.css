@@ -1,0 +1,4 @@
+.customHeading {
+  color: var(--green-custom-800) !important;
+  font-weight: bold !important;
+}

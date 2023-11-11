@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --black-custom-900: black;
+  --green-custom-900: #0d2513;
+  --green-custom-800: #173f20;
+  --green-custom-700: #15803d;
+  --green-custom-600: #2d7d40;
+  --main-color-100: #a4b6e5;
+  --yellow-color-500: #c89a4b;
+  --red-color-500: #d11a1a;
+  --red-color-700: #a30000;
+  --orange-color-500: #e66d00;
+}

@@ -1,0 +1,23 @@
+.roundedSelect .ant-select-selector {
+  background-color: var(--green-custom-700) !important;
+  color: white !important;
+  /* padding: 20px !important; */
+  border-radius: 20px !important;
+  width: 200px !important;
+}
+.roundedSelect .ant-select-arrow {
+  color: white !important;
+}
+
+@media (max-width: 1550px) {
+  .roundedSelect .ant-select-selector {
+    /* padding: 15px !important; */
+
+    width: 170px !important; /* Set your desired width for smaller screens */
+  }
+}
+@media (max-width: 1300px) {
+  .roundedSelect .ant-select-selector {
+    width: 150px !important; /* Set your desired width for smaller screens */
+  }
+}
