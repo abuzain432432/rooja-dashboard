@@ -24,5 +24,6 @@ const extendedApi = baseApi.injectEndpoints({
   }),
   overrideExisting: false,
 });
+
 export const { useLoginMutation, useGetMeQuery, useLazyGetMeQuery } =
   extendedApi;
