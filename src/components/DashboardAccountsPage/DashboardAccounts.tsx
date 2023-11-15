@@ -115,12 +115,12 @@ function DashboardAccounts() {
       render: (status: string) => {
         return (
           <div
-            className={`${
+            className={`first-letter:uppercase ${
               (status === 'blocked' || status === 'deleted') &&
-              'bg-red-500'
-            } ${status === 'active' && 'bg-green-500'} ${
-              status === 'pending' && 'bg-gray-500'
-            } py-2 text-center text-white rounded-xl font-semibold w-[80px]`}
+              'text-red-500'
+            } ${status === 'active' && 'text-green-500'} ${
+              status === 'pending' && 'text-gray-500'
+            } py-2   rounded-xl font-semibold w-[80px]`}
           >
             {status}
           </div>

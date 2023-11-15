@@ -46,10 +46,13 @@ export default function DashboardSingalPurchaseDetails({
               Amount
             </p>
             <p className='text-lg font-semibold text-gray-700'>
-              {(
+              {new Intl.NumberFormat('en', {
+                style: 'currency',
+                currency: purchaseDetails?.currency || 'NGN',
+              }).format(
                 (purchaseDetails?.amount as number) /
-                (purchaseDetails?.currency_unit as number)
-              ).toFixed(2)}
+                  (purchaseDetails?.currency_unit as number)
+              )}
             </p>
           </div>
 
@@ -58,10 +61,13 @@ export default function DashboardSingalPurchaseDetails({
               Balance
             </p>
             <p className='text-lg font-semibold text-gray-700'>
-              {(
+              {new Intl.NumberFormat('en', {
+                style: 'currency',
+                currency: purchaseDetails?.currency || 'NGN',
+              }).format(
                 (purchaseDetails?.balance as number) /
-                (purchaseDetails?.currency_unit as number)
-              ).toFixed(2)}
+                  (purchaseDetails?.currency_unit as number)
+              )}
             </p>
           </div>
           <div className='border-b border-gray-200 py-2'>
@@ -109,10 +115,13 @@ export default function DashboardSingalPurchaseDetails({
               Seller Balance
             </p>
             <p className='text-lg font-semibold text-gray-700'>
-              {(
+              {new Intl.NumberFormat('en', {
+                style: 'currency',
+                currency: purchaseDetails?.currency || 'NGN',
+              }).format(
                 (purchaseDetails?.seller_balance as number) /
-                (purchaseDetails?.currency_unit as number)
-              )?.toFixed(2)}
+                  (purchaseDetails?.currency_unit as number)
+              )}
             </p>
           </div>
           <div className='border-b border-gray-200 py-2'>
@@ -120,10 +129,13 @@ export default function DashboardSingalPurchaseDetails({
               Seller Tx Fee
             </p>
             <p className='text-lg font-semibold text-gray-700'>
-              {(
+              {new Intl.NumberFormat('en', {
+                style: 'currency',
+                currency: purchaseDetails?.currency || 'NGN',
+              }).format(
                 (purchaseDetails?.seller_tx_fee as number) /
-                (purchaseDetails?.currency_unit as number)
-              )?.toFixed(2)}
+                  (purchaseDetails?.currency_unit as number)
+              )}
             </p>
           </div>
           <div className='border-b border-gray-200 py-2'>
@@ -131,10 +143,13 @@ export default function DashboardSingalPurchaseDetails({
               Tx Fee
             </p>
             <p className='text-lg font-semibold text-gray-700'>
-              {(
+              {new Intl.NumberFormat('en', {
+                style: 'currency',
+                currency: purchaseDetails?.currency || 'NGN',
+              }).format(
                 (purchaseDetails?.tx_fee as number) /
-                (purchaseDetails?.currency_unit as number)
-              )?.toFixed(2)}
+                  (purchaseDetails?.currency_unit as number)
+              )}
             </p>
           </div>
           <div className='border-b border-gray-200 py-2'>

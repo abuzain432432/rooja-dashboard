@@ -53,6 +53,7 @@ export default function DashboardHeader() {
             <p>{user?.user?.last_name}</p>
           </div>
           <CustomButton
+            theme='red'
             icon={<FiLogOut />}
             onClick={() => setLogoutModal(true)}
           >

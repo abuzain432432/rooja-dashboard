@@ -65,7 +65,14 @@ function DashboardPurchases() {
       dataIndex: 'balance',
       key: 'balance',
       render: (balance: number, row: PerchagesDetailsType) => {
-        return <div>{(balance / row.currency_unit).toFixed(2)}</div>;
+        return (
+          <div>
+            {new Intl.NumberFormat('en', {
+              style: 'currency',
+              currency: row?.currency || 'NGN',
+            }).format(balance / row?.currency_unit)}
+          </div>
+        );
       },
     },
     {
@@ -73,7 +80,14 @@ function DashboardPurchases() {
       dataIndex: 'amount',
       key: 'amount',
       render: (amount: number, row: PerchagesDetailsType) => {
-        return <div>{(amount / row.currency_unit).toFixed(2)}</div>;
+        return (
+          <div>
+            {new Intl.NumberFormat('en', {
+              style: 'currency',
+              currency: row?.currency || 'NGN',
+            }).format(amount / row?.currency_unit)}
+          </div>
+        );
       },
     },
     {
@@ -82,7 +96,12 @@ function DashboardPurchases() {
       key: 'seller_balance',
       render: (sellerBalance: number, row: PerchagesDetailsType) => {
         return (
-          <div>{(sellerBalance / row.currency_unit).toFixed(2)}</div>
+          <div>
+            {new Intl.NumberFormat('en', {
+              style: 'currency',
+              currency: row?.currency || 'NGN',
+            }).format(sellerBalance / row?.currency_unit)}
+          </div>
         );
       },
     },
@@ -104,11 +123,11 @@ function DashboardPurchases() {
       render: (status: string) => {
         return (
           <div
-            className={`${status === 'failed' && 'bg-red-500'} ${
-              status === 'paid' && 'bg-green-500'
+            className={`${status === 'failed' && 'text-red-500'} ${
+              status === 'paid' && 'text-green-500'
             } ${
-              status === 'pending' && 'bg-gray-500'
-            } py-2 text-center first-letter:uppercase text-white rounded-xl font-semibold w-[80px]`}
+              status === 'pending' && 'text-gray-500'
+            } py-2 text-center first-letter:uppercase  rounded-xl font-semibold w-[80px]`}
           >
             {status}
           </div>

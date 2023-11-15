@@ -45,19 +45,49 @@ export default function DashboardFundings() {
       dataIndex: 'balance',
       key: 'balance',
       render: (balance: number, row: FundingsType) => {
-        return <div>{(balance / row.currency_unit).toFixed(2)}</div>;
+        return (
+          <div>
+            {new Intl.NumberFormat(row?.account?.lang || 'en', {
+              style: 'currency',
+              currency: row.currency,
+            }).format(balance / row.currency_unit)}
+          </div>
+        );
       },
     },
     {
       title: 'Amount',
       dataIndex: 'amount',
       key: 'amount',
+      render: (amount: number, row: FundingsType) => {
+        return (
+          <div>
+            {new Intl.NumberFormat(row?.account?.lang || 'en', {
+              style: 'currency',
+              currency: row.currency,
+            }).format(amount / row.currency_unit)}
+          </div>
+        );
+      },
     },
 
     {
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
+      render(status: string) {
+        return (
+          <div
+            className={`font-semibold first-letter:uppercase ${
+              status === 'paid' && 'text-green-500'
+            } ${status === 'expired' && 'text-gray-500'} ${
+              status === 'pending' && 'text-gray-500'
+            }`}
+          >
+            {status}
+          </div>
+        );
+      },
     },
 
     {
@@ -82,8 +112,15 @@ export default function DashboardFundings() {
       title: 'Expected Amount',
       dataIndex: 'dynamic_virtual_account_info',
       key: 'id',
-      render: (data: any) => {
-        return <div>{data.expected_amount} </div>;
+      render: (data: any, row: FundingsType) => {
+        return (
+          <div>
+            {new Intl.NumberFormat(row?.account?.lang || 'en', {
+              style: 'currency',
+              currency: row.currency,
+            }).format(data?.expected_amount)}
+          </div>
+        );
       },
     },
     {

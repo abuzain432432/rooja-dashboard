@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from './store/storeSlices/userAuthSlice';
 import { Toaster } from 'react-hot-toast';
-import DashboardLayout from './components/ui/DashboardLayout';
+import DashboardLayout from './components/layout/DashboardLayout';
 import DashboardOverviewPage from './page/DashboardOverviewPage';
 import DashboardAccountsPage from './page/DashboardAccountsPage';
 import DashboardWithdrawalsPage from './page/DashboardWithdrawalsPage';

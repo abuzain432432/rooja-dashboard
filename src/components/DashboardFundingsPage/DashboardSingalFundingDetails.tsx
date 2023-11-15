@@ -32,10 +32,16 @@ export default function DashboardSingalFundingDetails({
               Amount
             </p>
             <p className='text-lg font-semibold text-gray-700'>
-              {(
+              {new Intl.NumberFormat(
+                fundingsDetails?.account?.lang || 'en',
+                {
+                  style: 'currency',
+                  currency: fundingsDetails?.currency || 'NGN',
+                }
+              ).format(
                 (fundingsDetails?.amount as number) /
-                (fundingsDetails?.currency_unit as number)
-              ).toFixed(2)}
+                  (fundingsDetails?.currency_unit as number)
+              )}
             </p>
           </div>
           <div className='border-b border-gray-200 py-2'>
@@ -43,10 +49,16 @@ export default function DashboardSingalFundingDetails({
               Balance
             </p>
             <p className='text-lg font-semibold text-gray-700'>
-              {(
+              {new Intl.NumberFormat(
+                fundingsDetails?.account?.lang || 'en',
+                {
+                  style: 'currency',
+                  currency: fundingsDetails?.currency || 'NGN',
+                }
+              ).format(
                 (fundingsDetails?.balance as number) /
-                (fundingsDetails?.currency_unit as number)
-              ).toFixed(2)}
+                  (fundingsDetails?.currency_unit as number)
+              )}
             </p>
           </div>
 
@@ -131,34 +143,7 @@ export default function DashboardSingalFundingDetails({
             </p>
           </div>
         </div>
-        {/* ///////////////////////////////// */}
-        {/* account_name */}
-        {/* : 
-"SQUAD CHECKOUT"
-account_number
-: 
-"3368932933"
-bank
-: 
-"GTBank"
-currency
-: 
-"NGN"
-expected_amount
-: 
-"2000.00"
-expires_at
-: 
-"2023-09-25T03:45:36.846Z"
-funding_id
-: 
-"90d8ad7d-6734-483f-9dc7-3311f2e459f2"
-id
-: 
-54
-tx_ref
-: 
-"rj-e1be1b01-993b-4ca0-a087-79e17a145f43" */}
+
         <div className='mt-6'>
           <h2 className='text-xl font-bold text-gray-800 '>
             Dynamic Virtual Account Info
@@ -210,10 +195,18 @@ tx_ref
               Expected Amount
             </p>
             <p className='text-lg font-semibold text-gray-700'>
-              {
-                fundingsDetails?.dynamic_virtual_account_info
-                  ?.expected_amount
-              }
+              {new Intl.NumberFormat(
+                fundingsDetails?.account?.lang || 'en',
+                {
+                  style: 'currency',
+                  currency: fundingsDetails?.currency || 'NGN',
+                }
+              ).format(
+                +(
+                  fundingsDetails?.dynamic_virtual_account_info
+                    ?.expected_amount || 0
+                )
+              )}
             </p>
           </div>
           <div className='border-b border-gray-200 py-2'>

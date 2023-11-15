@@ -44,16 +44,30 @@ export default function DashboardWithdrawals() {
       title: 'Balance',
       dataIndex: 'balance',
       key: 'balance',
-      render: (balance: number, row: any) => {
-        return <div>{(balance / row.currency_unit).toFixed(2)}</div>;
+      render: (balance: number, row: WithdrawalDetailsType) => {
+        return (
+          <div>
+            {new Intl.NumberFormat(row?.account?.lang || 'en', {
+              style: 'currency',
+              currency: row?.currency || 'NGN',
+            }).format(balance / row.currency_unit)}
+          </div>
+        );
       },
     },
     {
       title: 'Amount',
       dataIndex: 'amount',
       key: 'amount',
-      render: (amount: number, row: any) => {
-        return <div>{(amount / row.currency_unit).toFixed(2)}</div>;
+      render: (amount: number, row: WithdrawalDetailsType) => {
+        return (
+          <div>
+            {new Intl.NumberFormat(row?.account?.lang || 'en', {
+              style: 'currency',
+              currency: row?.currency || 'NGN',
+            }).format(amount / row.currency_unit)}
+          </div>
+        );
       },
     },
 
@@ -61,8 +75,16 @@ export default function DashboardWithdrawals() {
       title: 'Tx Fee',
       dataIndex: 'tx_fee',
       key: 'tx_fee',
-      render: (tx_fee: number, row: any) => {
-        return <div>{(tx_fee / row.currency_unit).toFixed(2)}</div>;
+
+      render: (tx_fee: number, row: WithdrawalDetailsType) => {
+        return (
+          <div>
+            {new Intl.NumberFormat(row?.account?.lang || 'en', {
+              style: 'currency',
+              currency: row?.currency || 'NGN',
+            }).format(tx_fee / row.currency_unit)}
+          </div>
+        );
       },
     },
     {
@@ -91,10 +113,10 @@ export default function DashboardWithdrawals() {
         return (
           <div
             className={` ${
-              status === 'completed' && 'bg-green-500'
+              status === 'completed' && 'text-green-500'
             } ${
-              status === 'pending' && 'bg-gray-500'
-            } py-2 text-center first-letter:uppercase text-white rounded-xl font-semibold w-[90px]`}
+              status === 'pending' && 'text-gray-500'
+            } py-2 text-center first-letter:uppercase  rounded-xl font-semibold w-[90px]`}
           >
             {status}
           </div>

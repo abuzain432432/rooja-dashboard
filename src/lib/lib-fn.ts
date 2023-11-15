@@ -20,29 +20,29 @@ const formateRawData = (
   const results: {
     name: string;
     text: BarChartType;
-    value: null | number;
+    value: null | number | string;
     fill?: string;
   }[] = [
     {
-      name: 'Blocked',
+      name: 'Blocked Accounts',
       value: null,
       fill: '#e66d00',
       text: 'blocked',
     },
     {
       text: 'active',
-      name: 'Active',
+      name: 'Active Accounts',
       value: null,
       fill: '#15803d',
     },
     {
-      name: 'Pending',
+      name: 'Pending Accounts',
       text: 'pending',
       value: null,
       fill: '#c89a4b',
     },
     {
-      name: 'Deleted',
+      name: 'Deleted Accounts',
       text: 'deleted',
       value: null,
       fill: '#d11a1a',
@@ -55,23 +55,23 @@ const formateRawData = (
         const activeAccountData = results.find(
           item => item.text === 'active'
         );
-        activeAccountData!.value = +rawData[data] / CURRENCY_UNIT;
+        activeAccountData!.value = +rawData[data];
       } else if (data.includes('pending')) {
         const pendingAccountData = results.find(
           item => item.text === 'pending'
         );
-        pendingAccountData!.value = +rawData[data] / CURRENCY_UNIT;
+        pendingAccountData!.value = +rawData[data];
       } else if (data.includes('deleted')) {
         const deletedAccountData = results.find(
           item => item.text === 'deleted'
         );
-        deletedAccountData!.value = +rawData[data] / CURRENCY_UNIT;
+        deletedAccountData!.value = +rawData[data];
       } else if (data.includes('blocked')) {
         {
           const blockedAccountData = results.find(
             item => item.text === 'blocked'
           );
-          blockedAccountData!.value = +rawData[data] / CURRENCY_UNIT;
+          blockedAccountData!.value = +rawData[data];
         }
       }
     }
@@ -330,6 +330,7 @@ const formateFundingsData = (
   }
   return results;
 };
+
 export {
   formateRawData,
   formateRawFeesData,

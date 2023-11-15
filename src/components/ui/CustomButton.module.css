@@ -13,3 +13,6 @@
 .redButton {
   background-color: var(--red-color-500) !important;
 }
+.redButton:hover {
+  border-color: 1px solid var(--red-color-500) !important;
+}

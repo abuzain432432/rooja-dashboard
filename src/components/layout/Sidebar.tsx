@@ -6,6 +6,8 @@ import { TbBrandProducthunt } from 'react-icons/tb';
 import { MdOutlineManageAccounts } from 'react-icons/md';
 import { AiOutlineSetting } from 'react-icons/ai';
 import { RiAdminLine } from 'react-icons/ri';
+import ProtectedComponents from '../ui/ProtectedComponents';
+import { ROELS } from '../../types/types';
 export default function Sidebar() {
   return (
     <div className='2xl:w-[300px] xl:w-[220px] lg:w-[200px] min-h-screen overflow-y-auto bg-black py-8'>
@@ -36,32 +38,41 @@ export default function Sidebar() {
             <p>Accounts</p>
           </div>
         </NavLink>
-        <NavLink
-          to={'/dashboard/withdrawals'}
-          className={({ isActive }) =>
-            `2xl:mb-5 xl:mb-4 lg:mb-3 ${
-              isActive ? 'text-white bg-gray-800 ' : 'text-white'
-            }  hover:opacity-95 block  font-semibold duration-200 2xl:text-lg text-base 2xl:py-2 xl:py-1.5 lg:py-1 px-3 rounded-lg cursor-pointer`
-          }
+        <ProtectedComponents
+          allowedRoles={[ROELS.SALES, ROELS.SUPER, ROELS.SUPPORT]}
         >
-          <div className='flex gap-2 items-center'>
-            <FaMoneyCheck />
-            <p>Withdrawals</p>
-          </div>
-        </NavLink>
-        <NavLink
-          to={'/dashboard/purchases'}
-          className={({ isActive }) =>
-            `2xl:mb-5 xl:mb-4 lg:mb-3 ${
-              isActive ? 'text-white bg-gray-800 ' : 'text-white'
-            }  hover:opacity-95 block  font-semibold duration-200 2xl:text-lg text-base 2xl:py-2 xl:py-1.5 lg:py-1 px-3 rounded-lg cursor-pointer`
-          }
+          <NavLink
+            to={'/dashboard/withdrawals'}
+            className={({ isActive }) =>
+              `2xl:mb-5 xl:mb-4 lg:mb-3 ${
+                isActive ? 'text-white bg-gray-800 ' : 'text-white'
+              }  hover:opacity-95 block  font-semibold duration-200 2xl:text-lg text-base 2xl:py-2 xl:py-1.5 lg:py-1 px-3 rounded-lg cursor-pointer`
+            }
+          >
+            <div className='flex gap-2 items-center'>
+              <FaMoneyCheck />
+              <p>Withdrawals</p>
+            </div>
+          </NavLink>
+        </ProtectedComponents>
+        <ProtectedComponents
+          allowedRoles={[ROELS.SALES, ROELS.SUPER, ROELS.SUPPORT]}
         >
-          <div className='flex gap-2 items-center'>
-            <BiPurchaseTag />
-            <p>Purchases</p>
-          </div>
-        </NavLink>
+          <NavLink
+            to={'/dashboard/purchases'}
+            className={({ isActive }) =>
+              `2xl:mb-5 xl:mb-4 lg:mb-3 ${
+                isActive ? 'text-white bg-gray-800 ' : 'text-white'
+              }  hover:opacity-95 block  font-semibold duration-200 2xl:text-lg text-base 2xl:py-2 xl:py-1.5 lg:py-1 px-3 rounded-lg cursor-pointer`
+            }
+          >
+            <div className='flex gap-2 items-center'>
+              <BiPurchaseTag />
+              <p>Purchases</p>
+            </div>
+          </NavLink>
+        </ProtectedComponents>
+
         <NavLink
           to={'/dashboard/products'}
           className={({ isActive }) =>
@@ -75,45 +86,56 @@ export default function Sidebar() {
             <p> Products</p>
           </div>
         </NavLink>
-        <NavLink
-          to={'/dashboard/fundings'}
-          className={({ isActive }) =>
-            `2xl:mb-5 xl:mb-4 lg:mb-3 ${
-              isActive ? 'text-white bg-gray-800 ' : 'text-white'
-            }  hover:opacity-95 block  font-semibold duration-200 2xl:text-lg text-base 2xl:py-2 xl:py-1.5 lg:py-1 px-3 rounded-lg cursor-pointer`
-          }
+
+        <ProtectedComponents
+          allowedRoles={[ROELS.SALES, ROELS.SUPER, ROELS.SUPPORT]}
         >
-          <div className='flex gap-2 items-center'>
-            <TbBrandProducthunt />
-            <p> Fundings</p>
-          </div>
-        </NavLink>
-        <NavLink
-          to={'/dashboard/settings'}
-          className={({ isActive }) =>
-            `2xl:mb-5 xl:mb-4 lg:mb-3 ${
-              isActive ? 'text-white bg-gray-800 ' : 'text-white'
-            }  hover:opacity-95 block  font-semibold duration-200 2xl:text-lg text-base 2xl:py-2 xl:py-1.5 lg:py-1 px-3 rounded-lg cursor-pointer`
-          }
-        >
-          <div className='flex gap-2 items-center'>
-            <AiOutlineSetting />
-            <p> Settings</p>
-          </div>
-        </NavLink>
-        <NavLink
-          to={'/dashboard/new-admin'}
-          className={({ isActive }) =>
-            `2xl:mb-5 xl:mb-4 lg:mb-3 ${
-              isActive ? 'text-white bg-gray-800 ' : 'text-white'
-            }  hover:opacity-95 block  font-semibold duration-200 2xl:text-lg text-base 2xl:py-2 xl:py-1.5 lg:py-1 px-3 rounded-lg cursor-pointer`
-          }
-        >
-          <div className='flex gap-2 items-center'>
-            <RiAdminLine />
-            <p> New Admin</p>
-          </div>
-        </NavLink>
+          <NavLink
+            to={'/dashboard/fundings'}
+            className={({ isActive }) =>
+              `2xl:mb-5 xl:mb-4 lg:mb-3 ${
+                isActive ? 'text-white bg-gray-800 ' : 'text-white'
+              }  hover:opacity-95 block  font-semibold duration-200 2xl:text-lg text-base 2xl:py-2 xl:py-1.5 lg:py-1 px-3 rounded-lg cursor-pointer`
+            }
+          >
+            <div className='flex gap-2 items-center'>
+              <TbBrandProducthunt />
+              <p> Fundings</p>
+            </div>
+          </NavLink>
+        </ProtectedComponents>
+
+        <ProtectedComponents allowedRoles={[ROELS.SUPER]}>
+          <NavLink
+            to={'/dashboard/settings'}
+            className={({ isActive }) =>
+              `2xl:mb-5 xl:mb-4 lg:mb-3 ${
+                isActive ? 'text-white bg-gray-800 ' : 'text-white'
+              }  hover:opacity-95 block  font-semibold duration-200 2xl:text-lg text-base 2xl:py-2 xl:py-1.5 lg:py-1 px-3 rounded-lg cursor-pointer`
+            }
+          >
+            <div className='flex gap-2 items-center'>
+              <AiOutlineSetting />
+              <p> Settings</p>
+            </div>
+          </NavLink>
+        </ProtectedComponents>
+
+        <ProtectedComponents allowedRoles={[ROELS.SUPER]}>
+          <NavLink
+            to={'/dashboard/new-admin'}
+            className={({ isActive }) =>
+              `2xl:mb-5 xl:mb-4 lg:mb-3 ${
+                isActive ? 'text-white bg-gray-800 ' : 'text-white'
+              }  hover:opacity-95 block  font-semibold duration-200 2xl:text-lg text-base 2xl:py-2 xl:py-1.5 lg:py-1 px-3 rounded-lg cursor-pointer`
+            }
+          >
+            <div className='flex gap-2 items-center'>
+              <RiAdminLine />
+              <p> New Admin</p>
+            </div>
+          </NavLink>
+        </ProtectedComponents>
       </ul>
     </div>
   );

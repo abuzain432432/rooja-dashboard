@@ -8,7 +8,7 @@ import {
   formateRawData,
   formateRawFeesData,
   formateWithdrawalsData,
-} from '../../lib/lit-fn';
+} from '../../lib/lib-fn';
 
 import {
   DashboardAccountsFilterType,
@@ -100,7 +100,7 @@ export default function DashboardOverview() {
               ]}
             />
           </div>
-          <DashboardBarChart data={accountsData} />
+          <DashboardBarChart currency={false} data={accountsData} />
         </div>
         <div className='bg-white  2xl:p-8 xl:p-5 lg:p-3 shadow-lg rounded-lg'>
           <div className='flex justify-between mb-4'>

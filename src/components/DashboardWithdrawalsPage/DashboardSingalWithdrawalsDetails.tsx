@@ -31,10 +31,16 @@ export default function DashboardWithdrawalsDetails({
             Amount
           </p>
           <p className='text-lg font-semibold text-gray-700'>
-            {(
+            {new Intl.NumberFormat(
+              withdrwalDetails?.account?.lang || 'en',
+              {
+                style: 'currency',
+                currency: withdrwalDetails?.currency || 'NGN',
+              }
+            ).format(
               (withdrwalDetails?.amount as number) /
-              (withdrwalDetails?.currency_unit as number)
-            ).toFixed(2)}
+                (withdrwalDetails?.currency_unit as number)
+            )}
           </p>
         </div>
         <div className='border-b border-gray-200 py-2'>
@@ -42,10 +48,16 @@ export default function DashboardWithdrawalsDetails({
             Balance
           </p>
           <p className='text-lg font-semibold text-gray-700'>
-            {(
+            {new Intl.NumberFormat(
+              withdrwalDetails?.account?.lang || 'en',
+              {
+                style: 'currency',
+                currency: withdrwalDetails?.currency || 'NGN',
+              }
+            ).format(
               (withdrwalDetails?.balance as number) /
-              (withdrwalDetails?.currency_unit as number)
-            ).toFixed(2)}
+                (withdrwalDetails?.currency_unit as number)
+            )}
           </p>
         </div>
         <div className='border-b border-gray-200 py-2'>
@@ -53,10 +65,16 @@ export default function DashboardWithdrawalsDetails({
             tx_fee
           </p>
           <p className='text-lg font-semibold text-gray-700'>
-            {(
+            {new Intl.NumberFormat(
+              withdrwalDetails?.account?.lang || 'en',
+              {
+                style: 'currency',
+                currency: withdrwalDetails?.currency || 'NGN',
+              }
+            ).format(
               (withdrwalDetails?.tx_fee as number) /
-              (withdrwalDetails?.currency_unit as number)
-            ).toFixed(2)}
+                (withdrwalDetails?.currency_unit as number)
+            )}
           </p>
         </div>
         <div className='border-b border-gray-200 py-2'>

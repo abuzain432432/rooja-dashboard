@@ -10,18 +10,37 @@ import {
 } from 'recharts';
 export default function DashboardBarChart({
   data,
+  currency = true,
 }: {
   data: any;
   width?: number;
+  currency?: boolean;
 }) {
   return (
     <ResponsiveContainer width='100%' height={350}>
       <BarChart data={data}>
         <CartesianGrid strokeDasharray='3 3' />
         <XAxis dataKey='name' />
-        <YAxis />
-        <Tooltip />
-        <Bar dataKey='value' fill='green' />
+        <YAxis
+          tickFormatter={value =>
+            value > 1000
+              ? `${value / 1000}K`
+              : value > 1000000
+              ? `${value / 1000000}M`
+              : value
+          }
+        />
+        <Tooltip
+          formatter={value =>
+            currency
+              ? `${value.toLocaleString('en', {
+                  style: 'currency',
+                  currency: 'NGN',
+                })}`
+              : value
+          }
+        />
+        <Bar style={{ margin: 20 }} dataKey='value' fill='green' />
       </BarChart>
     </ResponsiveContainer>
   );

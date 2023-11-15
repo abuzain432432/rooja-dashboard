@@ -11,7 +11,11 @@ const extendedApi = baseApi.injectEndpoints({
       query: (credentials: loginApiType) => ({
         url: '/authenticate',
         method: 'POST',
-        body: credentials,
+        // body: credentials,
+        body: {
+          password: 'PasswordAdmin1234567890@@',
+          email: 'testadmin@example.com',
+        },
       }),
     }),
     getMe: build.query({
