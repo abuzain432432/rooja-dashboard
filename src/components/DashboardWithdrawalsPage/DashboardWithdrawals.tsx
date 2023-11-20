@@ -2,7 +2,7 @@
 import { useGetWithdrawalsQuery } from '../../store/apis/withdrawalsApi';
 import { useState, useEffect } from 'react';
 import CustomPagination from '../ui/CustomPagination';
-import { Table } from 'antd';
+import { Form, Input, Table } from 'antd';
 import { UserType, WithdrawalDetailsType } from '../../types/types';
 import toast from 'react-hot-toast';
 import moment from 'moment';
@@ -12,10 +12,12 @@ import { MdOutlineViewInAr } from 'react-icons/md';
 import DashboardWithdrawalsDetails from './DashboardSingalWithdrawalsDetails';
 export default function DashboardWithdrawals() {
   const [page, setPage] = useState(1);
+  const [searchedAccountId, setSearchedAccountId] = useState('');
   const [withdrwalDetails, setWithdrawalDetails] =
     useState<null | WithdrawalDetailsType>(null);
   const { isFetching, data, error } = useGetWithdrawalsQuery({
     page,
+    searchedAccountId,
   });
 
   useEffect(() => {
@@ -108,8 +110,6 @@ export default function DashboardWithdrawals() {
       dataIndex: 'status',
       key: 'status',
       render: (status: string) => {
-        console.log(status);
-
         return (
           <div
             className={` ${
@@ -152,11 +152,48 @@ export default function DashboardWithdrawals() {
   };
   const hasNextPage = data?.next_page !== -1;
   const hasPreviousPage = page > 1;
-  console.log('with drawals');
-  console.log(data?.withdrawals);
+  const handleSearchFormSubmit = (formData: any) => {
+    setPage(1);
+    setSearchedAccountId(formData.searchedAccount);
+  };
+  const handleResetBtnClick = () => {
+    setPage(1);
+    setSearchedAccountId('');
+  };
   return (
     <div className='bg-gray-200 2xl:p-10 xl:p-6 lg:px-4 lg:py-7 p-3 min-h-[calc(100vh-70px)] w-full'>
-      <div className=' gap-10 bg-white'>
+      <div className='bg-white mb-6 py-5 px-6 rounded-lg'>
+        <Form onFinish={handleSearchFormSubmit}>
+          <div className='gap-10 flex w-full'>
+            <div className='flex-1'>
+              <Form.Item
+                name={'searchedAccount'}
+                style={{ margin: 0 }}
+              >
+                <Input
+                  placeholder='Search by account id'
+                  size='large'
+                />
+              </Form.Item>
+            </div>
+            <div className='flex justify-end gap-3'>
+              <div>
+                <CustomButton htmlType='submit'>Search</CustomButton>
+              </div>
+              <div>
+                <CustomButton
+                  onClick={handleResetBtnClick}
+                  htmlType='reset'
+                  theme='gray'
+                >
+                  Reset
+                </CustomButton>
+              </div>
+            </div>
+          </div>
+        </Form>
+      </div>
+      <div className=' gap-10 bg-white rounded-lg overflow-hidden'>
         <Table
           scroll={{ x: 1400 }}
           loading={isFetching}

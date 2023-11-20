@@ -88,6 +88,22 @@ export default function DashboardSingalPurchaseDetails({
           </div>
           <div className='border-b border-gray-200 py-2'>
             <p className='text-sm font-semibold text-gray-700'>
+              Purchases Id
+            </p>
+            <p className='text-lg font-semibold text-gray-700'>
+              {purchaseDetails?.id}
+            </p>
+          </div>
+          <div className='border-b border-gray-200 py-2'>
+            <p className='text-sm font-semibold text-gray-700'>
+              Account Id
+            </p>
+            <p className='text-lg font-semibold text-gray-700'>
+              {purchaseDetails?.account_id}
+            </p>
+          </div>
+          <div className='border-b border-gray-200 py-2'>
+            <p className='text-sm font-semibold text-gray-700'>
               Product id
             </p>
             <p className='text-lg font-semibold text-gray-700'>

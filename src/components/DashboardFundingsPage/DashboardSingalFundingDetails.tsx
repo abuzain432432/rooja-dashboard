@@ -1,11 +1,7 @@
 import { Drawer } from 'antd';
 import { FundingsType } from '../../types/types';
 import moment from 'moment';
-import {
-  JsonView,
-  allExpanded,
-  darkStyles,
-} from 'react-json-view-lite';
+import JSONPretty from 'react-json-pretty';
 
 export default function DashboardSingalFundingDetails({
   fundingsDetails,
@@ -129,15 +125,18 @@ export default function DashboardSingalFundingDetails({
             </p>
           </div>
           <div className='border-b border-gray-200 py-2'>
-            <p className='text-sm font-semibold text-gray-700'>
+            <p className='text-sm font-semibold mb-1 text-gray-700'>
               Gateway Response
             </p>
             <p className='text-lg font-semibold text-gray-700'>
               {fundingsDetails?.gateway_response && (
-                <JsonView
-                  data={fundingsDetails?.gateway_response}
-                  shouldExpandNode={allExpanded}
-                  style={darkStyles}
+                <JSONPretty
+                  id='json-pretty'
+                  data={
+                    fundingsDetails?.gateway_response as unknown as object
+                  }
+                  // shouldExpandNode={allExpanded}
+                  // style={darkStyles}
                 />
               )}
             </p>

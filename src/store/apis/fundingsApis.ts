@@ -10,11 +10,15 @@ const fundingsApi = baseApi.injectEndpoints({
         next_page: number;
         fundings: FundingsType[];
       },
-      { page: number }
+      { page: number; searchedAccountId: string }
     >({
-      query: ({ page }) => {
+      query: ({ page, searchedAccountId }) => {
+        let url = `fundings?limit=10&page=${page}`;
+        if (searchedAccountId) {
+          url += `&accountId=${searchedAccountId}`;
+        }
         return {
-          url: `fundings?limit=10&page=${page}`,
+          url,
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token'),
           },

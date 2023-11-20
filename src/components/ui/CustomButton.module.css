@@ -10,6 +10,9 @@
 .grayButton {
   background-color: var(--main-color-100) !important;
 }
+.grayButton:hover {
+  border-color: var(--main-color-100) !important;
+}
 .redButton {
   background-color: var(--red-color-500) !important;
 }

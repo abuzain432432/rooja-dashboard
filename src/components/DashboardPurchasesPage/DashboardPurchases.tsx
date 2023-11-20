@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import CustomPagination from '../ui/CustomPagination.tsx';
 
-import { Table } from 'antd';
+import { Form, Input, Table } from 'antd';
 import toast from 'react-hot-toast';
 import { useGetPurchasesQuery } from '../../store/apis/purchasesApis.ts';
 import {
@@ -15,9 +15,13 @@ import CustomButton from '../ui/CutomButton.tsx';
 import { MdOutlineViewInAr } from 'react-icons/md';
 function DashboardPurchases() {
   const [page, setPage] = useState(1);
+  const [searchedAccountId, setSearchedAccountId] = useState('');
   const [purchaseDetails, setPurchaseDetails] =
     useState<null | PerchagesDetailsType>(null);
-  const { isFetching, data, error } = useGetPurchasesQuery({ page });
+  const { isFetching, data, error } = useGetPurchasesQuery({
+    page,
+    searchedAccountId,
+  });
   useEffect(() => {
     if (error) {
       toast.error('Something went wrong');
@@ -164,10 +168,48 @@ function DashboardPurchases() {
   const handlePurchaseDrawerClose = () => {
     setPurchaseDetails(null);
   };
-
+  const handleSearchFormSubmit = (formData: any) => {
+    setSearchedAccountId(formData.searchedAccount);
+    setPage(1);
+  };
+  const handleResetBtnClick = () => {
+    setPage(1);
+    setSearchedAccountId('');
+  };
   return (
     <div className='bg-gray-200 2xl:p-10 xl:p-6 lg:px-4 lg:py-7 p-3 min-h-[calc(100vh-70px)] w-full'>
-      <div className=' gap-10 bg-white'>
+      <div className='bg-white mb-6 py-5 px-6 rounded-lg'>
+        <Form onFinish={handleSearchFormSubmit}>
+          <div className='gap-10 flex w-full'>
+            <div className='flex-1'>
+              <Form.Item
+                name={'searchedAccount'}
+                style={{ margin: 0 }}
+              >
+                <Input
+                  placeholder='Search by account id'
+                  size='large'
+                />
+              </Form.Item>
+            </div>
+            <div className='flex justify-end gap-3'>
+              <div>
+                <CustomButton htmlType='submit'>Search</CustomButton>
+              </div>
+              <div>
+                <CustomButton
+                  onClick={handleResetBtnClick}
+                  htmlType='reset'
+                  theme='gray'
+                >
+                  Reset
+                </CustomButton>
+              </div>
+            </div>
+          </div>
+        </Form>
+      </div>
+      <div className=' gap-10 bg-white rounded-lg overflow-hidden'>
         <Table
           scroll={{ x: 1400 }}
           loading={isFetching}

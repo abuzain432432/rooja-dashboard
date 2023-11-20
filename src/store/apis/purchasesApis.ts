@@ -4,9 +4,13 @@ import { baseApi } from './baseApi';
 const purchasesApi = baseApi.injectEndpoints({
   endpoints: build => ({
     getPurchases: build.query({
-      query: ({ page }) => {
+      query: ({ page, searchedAccountId }) => {
+        let url = `purchases?limit=10&page=${page}`;
+        if (searchedAccountId) {
+          url += `&accountId=${searchedAccountId}`;
+        }
         return {
-          url: `purchases?limit=10&page=${page}`,
+          url,
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token'),
           },
