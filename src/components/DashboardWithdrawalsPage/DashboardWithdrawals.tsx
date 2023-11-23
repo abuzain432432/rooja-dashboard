@@ -49,10 +49,10 @@ export default function DashboardWithdrawals() {
       render: (balance: number, row: WithdrawalDetailsType) => {
         return (
           <div>
-            {new Intl.NumberFormat(row?.account?.lang || 'en', {
-              style: 'currency',
-              currency: row?.currency || 'NGN',
-            }).format(balance / row.currency_unit)}
+            N
+            {new Intl.NumberFormat(row?.account?.lang || 'en').format(
+              balance / row.currency_unit
+            )}
           </div>
         );
       },
@@ -64,10 +64,10 @@ export default function DashboardWithdrawals() {
       render: (amount: number, row: WithdrawalDetailsType) => {
         return (
           <div>
-            {new Intl.NumberFormat(row?.account?.lang || 'en', {
-              style: 'currency',
-              currency: row?.currency || 'NGN',
-            }).format(amount / row.currency_unit)}
+            N
+            {new Intl.NumberFormat(row?.account?.lang || 'en').format(
+              amount / row.currency_unit
+            )}
           </div>
         );
       },
@@ -81,10 +81,11 @@ export default function DashboardWithdrawals() {
       render: (tx_fee: number, row: WithdrawalDetailsType) => {
         return (
           <div>
-            {new Intl.NumberFormat(row?.account?.lang || 'en', {
-              style: 'currency',
-              currency: row?.currency || 'NGN',
-            }).format(tx_fee / row.currency_unit)}
+            N
+            {new Intl.NumberFormat(
+              row?.account?.lang || 'en',
+              {}
+            ).format(tx_fee / row.currency_unit)}
           </div>
         );
       },

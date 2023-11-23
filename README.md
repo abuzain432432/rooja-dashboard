@@ -14,56 +14,56 @@ project is best option
 
 ### Overview Page
 
-![Project page](1.PNG)
+![Project page](./readme-images/1.PNG)
 
 ### Accounts Page
 
-![Project page](2.PNG)
+![Project page](./readme-images/2.PNG)
 
 ### Singal Account Details Page Drawer
 
-![Project page](3.PNG)
+![Project page](./readme-images/3.PNG)
 
 ### Withdrawals Page
 
-![Project page](4.PNG)
+![Project page](./readme-images/4.PNG)
 
 ### Singal Withdrawal Details Drawer
 
-![Project page](6.PNG)
+![Project page](./readme-images/6.PNG)
 
 ### Purchases Page
 
-![Project page](5.PNG)
+![Project page](./readme-images/5.PNG)
 
 ### Singal Purchase Details Drawer
 
-![Project page](7.PNG)
+![Project page](./readme-images/7.PNG)
 
 ### And / Update Product Details Drawer
 
-![Project page](11.PNG)
+![Project page](./readme-images/11.PNG)
 
 ### Fundings Page
 
-![Project page](12.PNG)
+![Project page](./readme-images/12.PNG)
 
 ### Singal Fundings Details Drawer
 
-![Project page](13.PNG)
+![Project page](./readme-images/13.PNG)
 
 ### Settings Page
 
-![Project page](14.PNG)
+![Project page](./readme-images/14.PNG)
 
 ### Update Setting Page
 
-![Project page](15.PNG)
+![Project page](./readme-images/15.PNG)
 
 ### New Admin Page
 
-![Project page](16.PNG)
+![Project page](./readme-images/16.PNG)
 
 ### Login Page
 
-![Project page](17.PNG)
+![Project page](./readme-images/17.PNG)

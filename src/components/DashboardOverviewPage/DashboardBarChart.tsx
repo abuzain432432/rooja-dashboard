@@ -32,12 +32,7 @@ export default function DashboardBarChart({
         />
         <Tooltip
           formatter={value =>
-            currency
-              ? `${value.toLocaleString('en', {
-                  style: 'currency',
-                  currency: 'NGN',
-                })}`
-              : value
+            currency ? `N${value.toLocaleString('en')}` : value
           }
         />
         <Bar style={{ margin: 20 }} dataKey='value' fill='green' />

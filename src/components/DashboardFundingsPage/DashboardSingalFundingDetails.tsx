@@ -28,12 +28,13 @@ export default function DashboardSingalFundingDetails({
               Amount
             </p>
             <p className='text-lg font-semibold text-gray-700'>
+              N
               {new Intl.NumberFormat(
-                fundingsDetails?.account?.lang || 'en',
-                {
-                  style: 'currency',
-                  currency: fundingsDetails?.currency || 'NGN',
-                }
+                fundingsDetails?.account?.lang || 'en'
+                // {
+                //   style: 'currency',
+                //   currency: fundingsDetails?.currency || 'NGN',
+                // }
               ).format(
                 (fundingsDetails?.amount as number) /
                   (fundingsDetails?.currency_unit as number)
@@ -45,11 +46,12 @@ export default function DashboardSingalFundingDetails({
               Balance
             </p>
             <p className='text-lg font-semibold text-gray-700'>
+              N
               {new Intl.NumberFormat(
                 fundingsDetails?.account?.lang || 'en',
                 {
-                  style: 'currency',
-                  currency: fundingsDetails?.currency || 'NGN',
+                  // style: 'currency',
+                  // currency: fundingsDetails?.currency || 'NGN',
                 }
               ).format(
                 (fundingsDetails?.balance as number) /
@@ -135,8 +137,6 @@ export default function DashboardSingalFundingDetails({
                   data={
                     fundingsDetails?.gateway_response as unknown as object
                   }
-                  // shouldExpandNode={allExpanded}
-                  // style={darkStyles}
                 />
               )}
             </p>
@@ -194,11 +194,12 @@ export default function DashboardSingalFundingDetails({
               Expected Amount
             </p>
             <p className='text-lg font-semibold text-gray-700'>
+              N
               {new Intl.NumberFormat(
                 fundingsDetails?.account?.lang || 'en',
                 {
-                  style: 'currency',
-                  currency: fundingsDetails?.currency || 'NGN',
+                  // style: 'currency',
+                  // currency: fundingsDetails?.currency || 'NGN',
                 }
               ).format(
                 +(

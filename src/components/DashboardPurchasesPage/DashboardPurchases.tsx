@@ -71,9 +71,10 @@ function DashboardPurchases() {
       render: (balance: number, row: PerchagesDetailsType) => {
         return (
           <div>
+            N
             {new Intl.NumberFormat('en', {
-              style: 'currency',
-              currency: row?.currency || 'NGN',
+              // style: 'currency',
+              // currency: row?.currency || 'NGN',
             }).format(balance / row?.currency_unit)}
           </div>
         );
@@ -86,9 +87,10 @@ function DashboardPurchases() {
       render: (amount: number, row: PerchagesDetailsType) => {
         return (
           <div>
+            N
             {new Intl.NumberFormat('en', {
-              style: 'currency',
-              currency: row?.currency || 'NGN',
+              // style: 'currency',
+              // currency: row?.currency || 'NGN',
             }).format(amount / row?.currency_unit)}
           </div>
         );
@@ -101,9 +103,10 @@ function DashboardPurchases() {
       render: (sellerBalance: number, row: PerchagesDetailsType) => {
         return (
           <div>
+            N
             {new Intl.NumberFormat('en', {
-              style: 'currency',
-              currency: row?.currency || 'NGN',
+              // style: 'currency',
+              // currency: row?.currency || 'NGN',
             }).format(sellerBalance / row?.currency_unit)}
           </div>
         );

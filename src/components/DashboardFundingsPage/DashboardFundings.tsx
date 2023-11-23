@@ -49,9 +49,10 @@ export default function DashboardFundings() {
       render: (balance: number, row: FundingsType) => {
         return (
           <div>
+            N
             {new Intl.NumberFormat(row?.account?.lang || 'en', {
-              style: 'currency',
-              currency: row.currency,
+              // style: 'currency',
+              // currency: row.currency,
             }).format(balance / row.currency_unit)}
           </div>
         );
@@ -64,9 +65,10 @@ export default function DashboardFundings() {
       render: (amount: number, row: FundingsType) => {
         return (
           <div>
+            N
             {new Intl.NumberFormat(row?.account?.lang || 'en', {
-              style: 'currency',
-              currency: row.currency,
+              // style: 'currency',
+              // currency: row.currency,
             }).format(amount / row.currency_unit)}
           </div>
         );
@@ -117,9 +119,10 @@ export default function DashboardFundings() {
       render: (data: any, row: FundingsType) => {
         return (
           <div>
+            N
             {new Intl.NumberFormat(row?.account?.lang || 'en', {
-              style: 'currency',
-              currency: row.currency,
+              // style: 'currency',
+              // currency: row.currency,
             }).format(data?.expected_amount)}
           </div>
         );

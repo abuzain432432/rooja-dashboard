@@ -28,12 +28,13 @@ export default function DashboardWithdrawalsDetails({
             Amount
           </p>
           <p className='text-lg font-semibold text-gray-700'>
+            N
             {new Intl.NumberFormat(
-              withdrwalDetails?.account?.lang || 'en',
-              {
-                style: 'currency',
-                currency: withdrwalDetails?.currency || 'NGN',
-              }
+              withdrwalDetails?.account?.lang || 'en'
+              // {
+              //   style: 'currency',
+              //   currency: withdrwalDetails?.currency || 'NGN',
+              // }
             ).format(
               (withdrwalDetails?.amount as number) /
                 (withdrwalDetails?.currency_unit as number)
@@ -45,12 +46,13 @@ export default function DashboardWithdrawalsDetails({
             Balance
           </p>
           <p className='text-lg font-semibold text-gray-700'>
+            N
             {new Intl.NumberFormat(
-              withdrwalDetails?.account?.lang || 'en',
-              {
-                style: 'currency',
-                currency: withdrwalDetails?.currency || 'NGN',
-              }
+              withdrwalDetails?.account?.lang || 'en'
+              // {
+              //   style: 'currency',
+              //   currency: withdrwalDetails?.currency || 'NGN',
+              // }
             ).format(
               (withdrwalDetails?.balance as number) /
                 (withdrwalDetails?.currency_unit as number)
@@ -62,12 +64,13 @@ export default function DashboardWithdrawalsDetails({
             tx_fee
           </p>
           <p className='text-lg font-semibold text-gray-700'>
+            N
             {new Intl.NumberFormat(
-              withdrwalDetails?.account?.lang || 'en',
-              {
-                style: 'currency',
-                currency: withdrwalDetails?.currency || 'NGN',
-              }
+              withdrwalDetails?.account?.lang || 'en'
+              // {
+              //   style: 'currency',
+              //   currency: withdrwalDetails?.currency || 'NGN',
+              // }
             ).format(
               (withdrwalDetails?.tx_fee as number) /
                 (withdrwalDetails?.currency_unit as number)

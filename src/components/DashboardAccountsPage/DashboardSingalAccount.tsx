@@ -131,10 +131,11 @@ export default function DashboardSingalAccount() {
             Maximum Balance
           </p>
           <p className='text-lg font-semibold text-gray-700'>
-            {new Intl.NumberFormat(singalAccountData?.lang || 'en', {
-              style: 'currency',
-              currency: singalAccountData?.wallet?.currency || 'NGN',
-            }).format(
+            N
+            {new Intl.NumberFormat(
+              singalAccountData?.lang || 'en',
+              {}
+            ).format(
               singalAccountData?.settings?.data?.wallet
                 ?.custom_max_balance as number
             )}

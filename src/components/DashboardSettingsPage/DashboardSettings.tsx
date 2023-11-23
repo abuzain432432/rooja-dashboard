@@ -170,38 +170,59 @@ export default function DashboardSettings() {
             <div className='flex gap-2 border-b xl:py-2 lg:py-1 justify-between 2xl:px-6 lg:px-3 border-gray-200 w-full'>
               <span>Maximum Funding Amount: </span>
               <span className='font-semibold'>
-                {settings?.maximum_funding_amount}
+                N
+                {new Intl.NumberFormat('en').format(
+                  settings?.maximum_funding_amount as number
+                )}
+                {/* {settings?.maximum_funding_amount} */}
               </span>
             </div>
             <div className='flex gap-2 border-b xl:py-2 lg:py-1 justify-between 2xl:px-6 lg:px-3 border-gray-200 w-full'>
               <span>Maximum Wallet Balance: </span>
 
               <span className='font-semibold'>
-                {settings?.maximum_wallet_balance}
+                N
+                {new Intl.NumberFormat('en').format(
+                  settings?.maximum_wallet_balance as number
+                )}
+                {/* {settings?.maximum_wallet_balance} */}
               </span>
             </div>
             <div className='flex gap-2 border-b xl:py-2 lg:py-1 justify-between 2xl:px-6 lg:px-3 border-gray-200 w-full'>
               <span>Maximum Withdrawal Amount: </span>
               <span className='font-semibold'>
-                {settings?.maximum_withdrawal_amount}
+                {/* {settings?.maximum_withdrawal_amount} */}N
+                {new Intl.NumberFormat('en').format(
+                  settings?.maximum_withdrawal_amount as number
+                )}
               </span>
             </div>
             <div className='flex gap-2 border-b xl:py-2 lg:py-1 justify-between 2xl:px-6 lg:px-3 border-gray-200 w-full'>
               <span>Minimum Funding Amount: </span>
               <span className='font-semibold'>
-                {settings?.minimum_funding_amount}
+                {/* {settings?.minimum_funding_amount} */}N
+                {new Intl.NumberFormat('en').format(
+                  settings?.minimum_funding_amount as number
+                )}
               </span>
             </div>
             <div className='flex gap-2 border-b xl:py-2 lg:py-1 justify-between 2xl:px-6 lg:px-3 border-gray-200 w-full'>
               <span>Minimum Withdrawal Amount: </span>
               <span className='font-semibold'>
-                {settings?.minimum_withdrawal_amount}
+                {/* {settings?.minimum_withdrawal_amount} */}N
+                {new Intl.NumberFormat('en').format(
+                  settings?.minimum_withdrawal_amount as number
+                )}
               </span>
             </div>
             <div className='flex gap-2 border-b xl:py-2 lg:py-1 justify-between 2xl:px-6 lg:px-3 border-gray-200 w-full'>
               <span>Purchase Received Withdrawal Tx Fee: </span>
               <span className='font-semibold'>
-                {settings?.purchase_received_withdrawal_tx_fee}
+                {/* {settings?.purchase_received_withdrawal_tx_fee} */}
+                N
+                {new Intl.NumberFormat('en').format(
+                  settings?.purchase_received_withdrawal_tx_fee as number
+                )}
               </span>
             </div>
             <div className='flex gap-2 border-b xl:py-2 lg:py-1 justify-between 2xl:px-6 lg:px-3 border-gray-200 w-full'>
@@ -444,14 +465,19 @@ export default function DashboardSettings() {
             <div className='flex gap-2 border-b xl:py-2 lg:py-1 justify-between 2xl:px-6 lg:px-3 border-gray-200 w-full'>
               <span>Maximum Single Tx Amount: </span>
               <span className='font-semibold'>
-                {settings?.maximum_single_tx_amount}
+                {/* {settings?.maximum_single_tx_amount} */}N
+                {new Intl.NumberFormat('en').format(
+                  settings?.maximum_single_tx_amount as number
+                )}
               </span>
             </div>
             <div className='flex gap-2 border-b xl:py-2 lg:py-1 justify-between 2xl:px-6 lg:px-3 border-gray-200 w-full'>
-              {' '}
               <span>Minimum Single Tx Amount: </span>
               <span className='font-semibold'>
-                {settings?.minimum_single_tx_amount}
+                {/* {settings?.minimum_single_tx_amount} */}N
+                {new Intl.NumberFormat('en').format(
+                  settings?.minimum_single_tx_amount as number
+                )}
               </span>
             </div>
             <div className='flex gap-2 border-b xl:py-2 lg:py-1 justify-between 2xl:px-6 lg:px-3 border-gray-200 w-full'>
@@ -503,20 +529,32 @@ export default function DashboardSettings() {
             <div className='flex gap-2 border-b xl:py-2 lg:py-1 justify-between 2xl:px-6 lg:px-3 border-gray-200 w-full'>
               <span>Paystack 5k And Below Transfer Fee: </span>
               <span className='font-semibold'>
-                {settings?.paystack_5k_and_below_transfer_fee}
+                {/* {settings?.paystack_5k_and_below_transfer_fee} */}
+                N
+                {new Intl.NumberFormat('en').format(
+                  settings?.paystack_5k_and_below_transfer_fee as number
+                )}
               </span>
             </div>
             <div className='flex gap-2 border-b xl:py-2 lg:py-1 justify-between 2xl:px-6 lg:px-3 border-gray-200 w-full'>
               <span>Paystack 50k And Above Transfer Fee: </span>
               <span className='font-semibold'>
-                {settings?.paystack_50k_and_above_transfer_fee}
+                {/* {settings?.paystack_50k_and_above_transfer_fee} */}
+                N
+                {new Intl.NumberFormat('en').format(
+                  settings?.paystack_50k_and_above_transfer_fee as number
+                )}
               </span>
             </div>
 
             <div className='flex gap-2 border-b xl:py-2 lg:py-1 justify-between 2xl:px-6 lg:px-3 border-gray-200 w-full'>
               <span>Paystack 50k And Below Transfer Fee: </span>
               <span className='font-semibold'>
-                {settings?.paystack_50k_and_below_transfer_fee}
+                {/* {settings?.paystack_50k_and_below_transfer_fee} */}
+                N
+                {new Intl.NumberFormat('en').format(
+                  settings?.paystack_50k_and_below_transfer_fee as number
+                )}
               </span>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { BiPurchaseTag } from 'react-icons/bi';
 import { FaMoneyCheck } from 'react-icons/fa6';
 import { BsBarChart } from 'react-icons/bs';
@@ -8,9 +8,25 @@ import { AiOutlineSetting } from 'react-icons/ai';
 import { RiAdminLine } from 'react-icons/ri';
 import ProtectedComponents from '../ui/ProtectedComponents';
 import { ROELS } from '../../types/types';
+import sidebarLogo from '../../assets/images/sidebar-logo.jpeg';
+import { Image } from 'antd';
 export default function Sidebar() {
   return (
-    <div className='2xl:w-[300px] xl:w-[220px] lg:w-[200px] min-h-screen overflow-y-auto bg-black py-8'>
+    <div className='2xl:w-[300px] xl:w-[220px] lg:w-[200px] w-[170px] min-h-screen overflow-y-auto bg-black 2xl:py-6 lg:py-4'>
+      <div className='flex w-full justify-center xl:mb-4 mb-3 '>
+        <Link
+          to={'/dashboard'}
+          className='2xl:h-[60px] xl:h-[55px] lg:h-[45px]'
+        >
+          <Image
+            preview={false}
+            width={'auto'}
+            height={'100%'}
+            src={sidebarLogo}
+          />
+        </Link>
+      </div>
+
       <ul className='w-[85%] mx-auto'>
         <NavLink
           to={'/dashboard/overview'}
