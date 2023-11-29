@@ -5,31 +5,38 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import RootLayout from './components/layout/RootLayout';
-// import { ToastContainer } from 'react-toastify';
 
-import LoginPage from './page/LoginPage';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from './store/storeSlices/userAuthSlice';
 import { Toaster } from 'react-hot-toast';
-import DashboardLayout from './components/layout/DashboardLayout';
-import DashboardOverviewPage from './page/DashboardOverviewPage';
-import DashboardAccountsPage from './page/DashboardAccountsPage';
-import DashboardWithdrawalsPage from './page/DashboardWithdrawalsPage';
-import DashboardPurchasesPage from './page/DashboardPurchasesPage';
-import DashboardProductsPage from './page/DashboardProductsPage';
-import DashboardSettingsPage from './page/DashboardSettingsPage';
-import DashboardNewAdmin from './page/DashboardNewAdminPage';
-import DashboardFundingsPage from './page/DashboardFundingsPage';
+import { ROELS } from './types/types';
 import { Spin } from 'antd';
 
-import { ROELS } from './types/types';
+import DashboardLayout from './components/layout/DashboardLayout';
+import {
+  PageNotFoundPage,
+  DashboardOverviewPage,
+  DashboardProductsPage,
+  DashboardAccountsPage,
+  DashboardFundingsPage,
+  LoginPage,
+  DashboardNewAdminPage,
+  DashboardPurchasesPage,
+  DashboardSettingsPage,
+  DashboardWithdrawalsPage,
+  ErrorPage,
+} from './pages/Pages';
+import RootLayout from './components/layout/RootLayout';
 import ProtectRolesBasedRouteComponents from './components/ui/ProtectRolesBasedRouteComponents';
 
 const routes = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<RootLayout />}>
+    <Route
+      path='/'
+      errorElement={<ErrorPage />}
+      element={<RootLayout />}
+    >
       <Route index element={<Navigate to={'login'} />} />
       <Route path='login' element={<LoginPage />} />
       <Route path='dashboard' element={<DashboardLayout />}>
@@ -77,12 +84,13 @@ const routes = createBrowserRouter(
           path='new-admin'
           element={
             <ProtectRolesBasedRouteComponents
-              protect={<DashboardNewAdmin />}
+              protect={<DashboardNewAdminPage />}
               allowedRoles={[ROELS.SUPER]}
             />
           }
         />
       </Route>
+      <Route path='*' element={<PageNotFoundPage />} />
     </Route>
   )
 );
@@ -105,6 +113,7 @@ function App() {
     };
     presistToken();
   }, [dispatch]);
+  console.log('executed');
 
   return (
     <>

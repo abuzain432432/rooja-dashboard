@@ -1,0 +1,10 @@
+.message {
+  font-weight: 600 !important;
+  font-size: 18px !important;
+}
+.title {
+  font-weight: bold !important;
+  word-spacing: 4px !important;
+  letter-spacing: 1px !important;
+  margin-bottom: 10px !important;
+}

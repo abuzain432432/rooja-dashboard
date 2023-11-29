@@ -46,7 +46,7 @@ export const LoginForm = () => {
   }, [data, dispatch, navigate]);
 
   return (
-    <div className='min-h-[100vh] flex justify-center items-center flex-col'>
+    <div className='min-h-[100vh] bg-green-700 flex justify-center items-center flex-col'>
       <div className=' bg-white py-20 flex flex-col justify-center items-center px-10 shadow-2xl hover:shadow-3xl duration-300 hover:scale-[1.03] rounded-md  mx-auto '>
         <CustomHeading>Welcome</CustomHeading>
         <Image width={70} preview={false} src={logo} />
