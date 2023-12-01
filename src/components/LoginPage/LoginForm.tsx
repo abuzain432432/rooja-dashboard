@@ -13,7 +13,7 @@ import logo from '../../assets/images/logo.jpeg';
 import CustomButton from '../ui/CutomButton';
 import CustomHeading from '../ui/CustomHeading';
 import toast from 'react-hot-toast';
-export const LoginForm = () => {
+export const LoginForm: React.FC = () => {
   const [login, { data, isLoading }] = useLoginMutation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -73,6 +73,10 @@ export const LoginForm = () => {
               {
                 required: true,
                 message: 'Please input your email!',
+              },
+              {
+                type: 'email',
+                message: 'The input is not valid E-mail!',
               },
             ]}
           >
