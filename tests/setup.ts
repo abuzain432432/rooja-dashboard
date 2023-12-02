@@ -2,8 +2,14 @@ import { afterEach, vi } from 'vitest';
 import { cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/vitest';
 
-// runs a cleanup after each test case (e.g. clearing jsdom)
+import { server } from '../src/mock/api/server.ts';
+
+process.env.DEBUG_PRINT_LIMIT = '15000';
+
+beforeAll(() => server.listen({ onUnhandledRequest: 'error' }));
+afterAll(() => server.close());
 afterEach(() => {
+  server.resetHandlers();
   cleanup();
 });
 

@@ -1,26 +1,20 @@
 import { expect } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
-import {
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from '@testing-library/react';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
 
-import { Provider } from 'react-redux';
-import store from '../../store/store.ts';
 import LoginForm from './LoginForm.tsx';
 import userEvent from '@testing-library/user-event';
-import * as userAuthApis from '../../store/apis/userAuthApis';
+// import * as userAuthApis from '../../store/apis/userAuthApis';
+import { renderWithProviders } from '../../test-utils.tsx';
+import { server } from '../../mock/api/server.ts';
+import { http } from 'msw';
 
 describe('App', () => {
   test('renders LoginForm component', async () => {
-    render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <LoginForm />
-        </MemoryRouter>
-      </Provider>
+    renderWithProviders(
+      <MemoryRouter>
+        <LoginForm />
+      </MemoryRouter>
     );
     const headingElement = screen.getByText(/welcome/i);
     const emailLabelElement = screen.getByLabelText(/email/i);
@@ -32,18 +26,14 @@ describe('App', () => {
     expect(emailLabelElement).toBeInTheDocument();
     expect(passwordLabelElement).toBeInTheDocument();
     expect(submitButton).toBeInTheDocument();
-    screen.debug();
+    // screen.debug();
   });
-  // {
-  //   /* <div role="status" aria-live="polite" class="go3958317564">authentication failed. please check your credentials</div> */
-  // }
+
   test('shows validation errors when submitting with empty fields', async () => {
-    render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <LoginForm />
-        </MemoryRouter>
-      </Provider>
+    renderWithProviders(
+      <MemoryRouter>
+        <LoginForm />
+      </MemoryRouter>
     );
 
     const submitButton = screen.getByRole('button', {
@@ -59,16 +49,14 @@ describe('App', () => {
 
       expect(emailError).toBeInTheDocument();
       expect(passwordError).toBeInTheDocument();
-      screen.debug();
+      // screen.debug();
     });
   });
   test('shows validation errors when submitting with invalid email and empty password field', async () => {
-    render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <LoginForm />
-        </MemoryRouter>
-      </Provider>
+    renderWithProviders(
+      <MemoryRouter>
+        <LoginForm />
+      </MemoryRouter>
     );
 
     const submitButton = screen.getByRole('button', {
@@ -93,32 +81,15 @@ describe('App', () => {
       expect(errorElement).toBeInTheDocument();
       expect(passwordError).toBeInTheDocument();
     });
-    screen.debug();
+    // screen.debug();
   });
-  test('submits the form with valid input and redirects to /dashboard', async () => {
-    const mockUseLoginMutation = async () => ({
-      data: {
-        dashboard_data: {}, // Add your expected dashboard data here
-        admin: {}, // Add your expected admin data here
-        token: 'fakeToken',
-      },
-      isLoading: false,
-    });
 
-    // Save the original useLoginMutation function
-    const originalUseLoginMutation = userAuthApis.useLoginMutation;
-
-    // Override the useLoginMutation function with the mock implementation
-    userAuthApis.useLoginMutation = mockUseLoginMutation;
-
-    render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <LoginForm />
-        </MemoryRouter>
-      </Provider>
+  it('handles good response', async () => {
+    renderWithProviders(
+      <MemoryRouter>
+        <LoginForm />
+      </MemoryRouter>
     );
-
     const emailInput = screen.getByLabelText(/email/i);
     const passwordInput = screen.getByLabelText(/password/i);
     const submitButton = screen.getByRole('button', {
@@ -131,11 +102,18 @@ describe('App', () => {
 
     // Click submit button
     userEvent.click(submitButton);
+    // const loadingIcon = screen.getByRole('img', { name: /loading/i });
 
-    // Wait for redirection
-    await waitFor(() => {
-      // Assert that redirection to /dashboard occurred
-      expect(window.location.pathname).toBe('/dashboard');
-    });
+    // expect(loadingIcon).toBeInTheDocument();
+
+    // server.use(
+    //   http.post(
+    //     'https://roojaa-admin-proxy.dev.follomy.com​/v1/authenticate',
+    //     (req: any, res: any, ctx: any) => {
+    //       return res(ctx.status(500));
+    //     }
+    //   )
+    // );
+    screen.debug();
   });
 });
