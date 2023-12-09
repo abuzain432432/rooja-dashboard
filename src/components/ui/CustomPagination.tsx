@@ -20,6 +20,7 @@ export default function CustomPagination({
   return (
     <div className='flex gap-4 px-10 justify-end  w-full py-6'>
       <div
+        data-testid={'previous-page-pagination-btn'}
         onClick={onBackBtnClick}
         className={`bg-gray-300 ${
           !hasPreviousPage || loading
@@ -31,6 +32,7 @@ export default function CustomPagination({
       </div>
       <div
         onClick={onNextBtnClick}
+        data-testid={'next-page-pagination-btn'}
         className={`bg-gray-300 ${
           !hasNextPage || loading
             ? 'cursor-not-allowed'

@@ -23,6 +23,7 @@ function CustomButton({
 }: CustomButtonType) {
   return (
     <Button
+      data-testid={`${icon ? 'icon-btn' : 'btn'}`}
       size={size}
       onClick={onClick}
       loading={isLoading}

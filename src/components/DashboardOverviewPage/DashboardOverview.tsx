@@ -5,7 +5,7 @@ import { useState } from 'react';
 import {
   formateFundingsData,
   formatePurchasesData,
-  formateRawData,
+  formateAccountsRawData,
   formateRawFeesData,
   formateWithdrawalsData,
 } from '../../lib/lib-fn';
@@ -61,7 +61,7 @@ export default function DashboardOverview() {
     setFundingsFilter(value);
   };
 
-  const accountsData = formateRawData(
+  const accountsData = formateAccountsRawData(
     userDashboardData.accounts!,
     accountsFilter
   );

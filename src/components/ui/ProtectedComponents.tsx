@@ -13,7 +13,6 @@ export default function ProtectedComponents({
   const hasPermission = allowedRoles.some(
     role => role === userData?.user?.role
   );
-  console.log(hasPermission);
   if (!hasPermission) {
     return <></>;
   }

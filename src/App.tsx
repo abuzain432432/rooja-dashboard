@@ -113,7 +113,6 @@ function App() {
     };
     presistToken();
   }, [dispatch]);
-  console.log('executed');
 
   return (
     <>

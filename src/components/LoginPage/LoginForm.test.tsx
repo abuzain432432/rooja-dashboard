@@ -1,21 +1,33 @@
-import { expect } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
-
 import LoginForm from './LoginForm.tsx';
 import userEvent from '@testing-library/user-event';
 // import * as userAuthApis from '../../store/apis/userAuthApis';
 import { renderWithProviders } from '../../test-utils.tsx';
-import { server } from '../../mock/api/server.ts';
-import { http } from 'msw';
+// import { worker } from '../../../mock/browser';
+// import { invalidAuthHandler } from '../../../mock/handler';
 
-describe('App', () => {
+describe('-----Unit Test for testing Loin Form-----', async () => {
   test('renders LoginForm component', async () => {
     renderWithProviders(
       <MemoryRouter>
         <LoginForm />
       </MemoryRouter>
     );
+    try {
+      const res = await fetch(
+        'https://roojaa-admin-proxy.dev.follomy.com/v1/accounts/*'
+      );
+      if (!res.ok) {
+        throw await res.json();
+      }
+      const data = await res.json();
+      console.log(data);
+      console.log('_______________________________');
+    } catch (error: any) {
+      console.log('erro++++++++++++++++++++++++++++++');
+      console.log(error);
+    }
     const headingElement = screen.getByText(/welcome/i);
     const emailLabelElement = screen.getByLabelText(/email/i);
     const passwordLabelElement = screen.getByLabelText(/password/i);
@@ -26,7 +38,6 @@ describe('App', () => {
     expect(emailLabelElement).toBeInTheDocument();
     expect(passwordLabelElement).toBeInTheDocument();
     expect(submitButton).toBeInTheDocument();
-    // screen.debug();
   });
 
   test('shows validation errors when submitting with empty fields', async () => {
@@ -39,7 +50,7 @@ describe('App', () => {
     const submitButton = screen.getByRole('button', {
       name: /submit/i,
     });
-    userEvent.click(submitButton);
+    await userEvent.click(submitButton);
 
     await waitFor(() => {
       const emailError = screen.getByText(/please input your email/i);
@@ -49,7 +60,6 @@ describe('App', () => {
 
       expect(emailError).toBeInTheDocument();
       expect(passwordError).toBeInTheDocument();
-      // screen.debug();
     });
   });
   test('shows validation errors when submitting with invalid email and empty password field', async () => {
@@ -63,57 +73,55 @@ describe('App', () => {
       name: /submit/i,
     });
     const emailLabelElement = screen.getByLabelText(/email/i);
-    // const passwordLabelElement = screen.getByLabelText(/password/i);
 
     fireEvent.change(emailLabelElement, {
       target: { value: 'test12' },
     });
 
-    userEvent.click(submitButton);
-
+    await userEvent.click(submitButton);
     await waitFor(() => {
-      const errorElement = screen.getByText(
+      const emailErrorElement = screen.queryByText(
         /The input is not valid E-mail!/i
       );
-      const passwordError = screen.getByText(
+      const passwordErrorElement = screen.queryByText(
         /Please input your password!/i
       );
-      expect(errorElement).toBeInTheDocument();
-      expect(passwordError).toBeInTheDocument();
+      expect(emailErrorElement).toBeInTheDocument();
+      expect(passwordErrorElement).toBeInTheDocument();
     });
-    // screen.debug();
   });
 
-  it('handles good response', async () => {
+  test('shows no  validation errors if credentails values are correct', async () => {
     renderWithProviders(
       <MemoryRouter>
         <LoginForm />
       </MemoryRouter>
     );
-    const emailInput = screen.getByLabelText(/email/i);
-    const passwordInput = screen.getByLabelText(/password/i);
-    const submitButton = screen.getByRole('button', {
-      name: /submit/i,
+
+    const submitButton = screen.getByText(/submit/i);
+
+    const passwordLabelElement = screen.getByLabelText(/password/i);
+    const emailLabelElement = screen.getByLabelText(/email/i);
+
+    fireEvent.change(emailLabelElement, {
+      target: { value: 'testadmin@example.com' },
     });
+    fireEvent.change(passwordLabelElement, {
+      target: { value: 'PasswordAdmin1234567890@@' },
+    });
+    // worker.use(invalidAuthHandler);
 
-    // Enter valid email and password
-    userEvent.type(emailInput, 'validemail@example.com');
-    userEvent.type(passwordInput, 'PasswordAdmin1234567890@@');
+    await userEvent.click(submitButton);
 
-    // Click submit button
-    userEvent.click(submitButton);
-    // const loadingIcon = screen.getByRole('img', { name: /loading/i });
-
-    // expect(loadingIcon).toBeInTheDocument();
-
-    // server.use(
-    //   http.post(
-    //     'https://roojaa-admin-proxy.dev.follomy.com​/v1/authenticate',
-    //     (req: any, res: any, ctx: any) => {
-    //       return res(ctx.status(500));
-    //     }
-    //   )
-    // );
-    screen.debug();
+    await waitFor(() => {
+      const emailErrorElement = screen.queryByText(
+        /The input is not valid E-mail!/i
+      );
+      const passwordErrorElement = screen.queryByText(
+        /Please input your password!/i
+      );
+      expect(emailErrorElement).equals(null);
+      expect(passwordErrorElement).equals(null);
+    });
   });
 });

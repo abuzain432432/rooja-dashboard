@@ -20,72 +20,72 @@ export interface OverviewAccountsDetailsType {
 }
 
 export interface OverviewPurchaseDetailsType {
-  total_success_purchases: number;
-  total_failed_purchases: number;
-  total_pending_purchases: number;
-  total_success_purchases_today: number;
-  total_failed_purchases_today: number;
-  total_pending_purchases_today: number;
-  total_success_purchases_this_month: number;
-  total_failed_purchases_this_month: number;
-  total_pending_purchases_this_month: number;
-  total_success_purchases_this_year: number;
-  total_failed_purchases_this_year: number;
-  total_pending_purchases_this_year: number;
-  [key: string]: number; // This is the index signature
+  total_success_purchases: number | string;
+  total_failed_purchases: number | string;
+  total_pending_purchases: number | string;
+  total_success_purchases_today: number | string;
+  total_failed_purchases_today: number | string;
+  total_pending_purchases_today: number | string;
+  total_success_purchases_this_month: number | string;
+  total_failed_purchases_this_month: number | string;
+  total_pending_purchases_this_month: number | string;
+  total_success_purchases_this_year: number | string;
+  total_failed_purchases_this_year: number | string;
+  total_pending_purchases_this_year: number | string;
+  [key: string]: number | string; // This is the index signature
 }
 export interface OverviewWithdrawalsDetailsType {
-  total_success_withdrawals: number;
-  total_failed_withdrawals: number;
-  total_pending_withdrawals: number;
-  total_success_withdrawals_today: number;
-  total_failed_withdrawals_today: number;
-  total_pending_withdrawals_today: number;
-  total_success_withdrawals_this_month: number;
-  total_failed_withdrawals_this_month: number;
-  total_pending_withdrawals_this_month: number;
-  total_success_withdrawals_this_year: number;
-  total_failed_withdrawals_this_year: number;
-  total_pending_withdrawals_this_year: number;
-  [key: string]: number; // This is the index signature
+  total_success_withdrawals: number | string;
+  total_failed_withdrawals: number | string;
+  total_pending_withdrawals: number | string;
+  total_success_withdrawals_today: number | string;
+  total_failed_withdrawals_today: number | string;
+  total_pending_withdrawals_today: number | string;
+  total_success_withdrawals_this_month: number | string;
+  total_failed_withdrawals_this_month: number | string;
+  total_pending_withdrawals_this_month: number | string;
+  total_success_withdrawals_this_year: number | string;
+  total_failed_withdrawals_this_year: number | string;
+  total_pending_withdrawals_this_year: number | string;
+  [key: string]: number | string; // This is the index signature
 }
 export interface OverviewFeesDetailsType {
-  total_purchase_service_fees: number;
-  total_purchase_service_fees_today: number;
-  total_purchase_service_fees_this_month: number;
-  total_purchase_service_fees_this_year: number;
-  total_withdrawal_service_fees: number;
-  total_withdrawal_service_fees_today: number;
-  total_withdrawal_service_fees_this_month: number;
-  total_withdrawal_service_fees_this_year: number;
-  total_funding_gateway_fees: number;
-  total_funding_gateway_fees_today: number;
-  total_funding_gateway_fees_this_month: number;
-  total_funding_gateway_fees_this_year: number;
-  total_withdrawal_gateway_fees: number;
-  total_withdrawal_gateway_fees_today: number;
-  total_withdrawal_gateway_fees_this_month: number;
-  total_withdrawal_gateway_fees_this_year: number;
-  [key: string]: number; // This is the index signature
+  total_purchase_service_fees: number | string;
+  total_purchase_service_fees_today: number | string;
+  total_purchase_service_fees_this_month: number | string;
+  total_purchase_service_fees_this_year: number | string;
+  total_withdrawal_service_fees: number | string;
+  total_withdrawal_service_fees_today: number | string;
+  total_withdrawal_service_fees_this_month: number | string;
+  total_withdrawal_service_fees_this_year: number | string;
+  total_funding_gateway_fees: number | string;
+  total_funding_gateway_fees_today: number | string;
+  total_funding_gateway_fees_this_month: number | string;
+  total_funding_gateway_fees_this_year: number | string;
+  total_withdrawal_gateway_fees: number | string;
+  total_withdrawal_gateway_fees_today: number | string;
+  total_withdrawal_gateway_fees_this_month: number | string;
+  total_withdrawal_gateway_fees_this_year: number | string;
+  [key: string]: number | string; // This is the index signature
 }
 export interface OverviewFundingsDetailsType {
-  total_success_fundings: number;
-  total_failed_fundings: number;
-  total_pending_fundings: number;
-  total_expired_fundings: number;
-  total_success_fundings_today: number;
-  total_failed_fundings_today: number;
-  total_pending_fundings_today: number;
-  total_expired_fundings_today: number;
-  total_success_fundings_this_month: number;
-  total_failed_fundings_this_month: number;
-  total_pending_fundings_this_month: number;
-  total_expired_fundings_this_month: number;
-  total_success_fundings_this_year: number;
-  total_failed_fundings_this_year: number;
-  total_pending_fundings_this_year: number;
-  total_expired_fundings_this_year: number;
-  [key: string]: number; // This is the index signature
+  total_success_fundings: number | string;
+  total_failed_fundings: number | string;
+  total_pending_fundings: number | string;
+  total_expired_fundings: number | string;
+  total_success_fundings_today: number | string;
+  total_failed_fundings_today: number | string;
+  total_pending_fundings_today: number | string;
+  total_expired_fundings_today: number | string;
+  total_success_fundings_this_month: number | string;
+  total_failed_fundings_this_month: number | string;
+  total_pending_fundings_this_month: number | string;
+  total_expired_fundings_this_month: number | string;
+  total_success_fundings_this_year: number | string;
+  total_failed_fundings_this_year: number | string;
+  total_pending_fundings_this_year: number | string;
+  total_expired_fundings_this_year: number | string;
+  [key: string]: number | string; // This is the index signature
 }
 export interface BankAccountType {
   id: string;
@@ -132,6 +132,24 @@ export interface SingalAccountDetailsType {
   wallet: WalletType;
 }
 
+export interface singalAccountApiResponseType {
+  account: {
+    bank_account: BankAccountType;
+    wallet: WalletType;
+    settings: {
+      id: 14;
+      account_id: string;
+      data: {
+        wallet: {
+          custom_max_balance: number;
+        };
+      };
+    };
+  } & UserType;
+}
+
+export type singalAccountApiPropsType = string;
+
 type FilterTypes = 'month' | 'year' | 'today';
 
 export type DashboardAccountsFilterType = FilterTypes | 'accounts';
@@ -169,7 +187,20 @@ export interface UserType {
   phone: string;
   phone_verified: boolean;
   status: string;
-  role: string;
+  role?: string;
+}
+export interface accountsApiResponseType {
+  accounts: UserType[];
+  current_page: number;
+  limit: number;
+  next_page: number;
+}
+export interface accountsApiParamsType {
+  page: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
 }
 
 export interface WithdrawalDetailsType {

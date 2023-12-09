@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode } from 'react';
 import { useSelector } from 'react-redux';
 import { getUserDetailsSlice } from '../../store/storeSlices/userAuthSlice';
@@ -15,7 +14,6 @@ export default function ProtectRolesBasedRouteComponents({
   const hasPermission = allowedRoles.some(
     role => role === userData?.user?.role
   );
-  console.log(hasPermission);
   if (!hasPermission) {
     return <Navigate to={'/dashboard'} />;
   }

@@ -1,8 +1,17 @@
+import {
+  accountsApiParamsType,
+  accountsApiResponseType,
+  singalAccountApiPropsType,
+  singalAccountApiResponseType,
+} from '../../types/types';
 import { baseApi } from './baseApi';
 
 const accountApi = baseApi.injectEndpoints({
   endpoints: build => ({
-    getAccounts: build.query({
+    getAccounts: build.query<
+      accountsApiResponseType,
+      accountsApiParamsType
+    >({
       query: ({ page, firstName, lastName, email, phone }) => {
         let url = `accounts?limit=10&page=${page}`;
         if (firstName) {
@@ -26,7 +35,10 @@ const accountApi = baseApi.injectEndpoints({
       },
       providesTags: ['user-update'],
     }),
-    getSingalAccountData: build.query({
+    getSingalAccountData: build.query<
+      singalAccountApiResponseType,
+      singalAccountApiPropsType
+    >({
       query: (id: string) => {
         return {
           url: `accounts/${id}`,

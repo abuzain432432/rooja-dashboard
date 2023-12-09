@@ -12,8 +12,9 @@ import {
   OverviewWithdrawalsDetailsType,
 } from '../types/types';
 
-const CURRENCY_UNIT = 100;
-const formateRawData = (
+export const CURRENCY_UNIT = 100;
+
+const formateAccountsRawData = (
   rawData: OverviewAccountsDetailsType,
   filter: DashboardAccountsFilterType
 ) => {
@@ -332,7 +333,7 @@ const formateFundingsData = (
 };
 
 export {
-  formateRawData,
+  formateAccountsRawData,
   formateRawFeesData,
   formateWithdrawalsData,
   formatePurchasesData,

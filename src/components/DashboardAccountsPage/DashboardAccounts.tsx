@@ -165,14 +165,14 @@ function DashboardAccounts() {
   };
   const handleNextBtnClick = () => {
     if (data?.next_page !== -1 && !isFetching) {
-      setPage(data?.next_page);
+      setPage(data?.next_page as number);
     }
   };
   const hasNextPage = data?.next_page !== -1;
   const hasPreviousPage = page > 1;
   const handleSearchFormSubmit = (formData: any) => {
     setPage(1);
-    console.log(formData);
+
     setSearchedQueryData({ ...formData });
   };
   const handleResetBtnClick = () => {
