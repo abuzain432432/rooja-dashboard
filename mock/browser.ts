@@ -4,15 +4,12 @@ import { handlers } from './handler';
 
 export const worker = setupWorker(...handlers);
 // Register the Service Worker and enable the mocking
+beforeAll(async () => {
+  await worker.start();
+});
 
-// beforeAll(async () => {
-//   await worker.start();
-// });
+// Reset any request handlers that are declared as a part of the test
+afterEach(() => worker.resetHandlers());
 
-// afterEach(() => {
-//   worker.restoreHandlers();
-// });
-
-// afterAll(() => {
-//   worker.stop();
-// });
+// Clean up once the tests are done
+afterAll(() => worker.stop());
