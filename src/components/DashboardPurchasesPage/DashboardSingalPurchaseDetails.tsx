@@ -9,7 +9,6 @@ export default function DashboardSingalPurchaseDetails({
   purchaseDetails: null | PerchagesDetailsType;
   onClose: () => void;
 }) {
-  console.log(purchaseDetails);
   return (
     <Drawer
       // title='Basic Drawer'

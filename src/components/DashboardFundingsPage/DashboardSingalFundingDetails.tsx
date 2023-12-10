@@ -10,7 +10,6 @@ export default function DashboardSingalFundingDetails({
   fundingsDetails: null | FundingsType;
   onClose: () => void;
 }) {
-  console.log(fundingsDetails);
   return (
     <Drawer
       placement='right'

@@ -10,7 +10,6 @@ export default function DashboardWithdrawalsDetails({
   withdrwalDetails: null | WithdrawalDetailsType;
   onClose: () => void;
 }) {
-  console.log(withdrwalDetails);
   return (
     <Drawer
       // title='Basic Drawer'

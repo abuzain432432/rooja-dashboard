@@ -179,15 +179,16 @@ export type BarChartType =
 
 export interface UserType {
   email: string;
-  email_verified: boolean;
+  email_verified?: boolean;
   first_name: string;
   id: string;
   lang: string;
   last_name: string;
   phone: string;
-  phone_verified: boolean;
+  phone_verified?: boolean;
   status: string;
   role?: string;
+  title?: string;
 }
 export interface accountsApiResponseType {
   accounts: UserType[];

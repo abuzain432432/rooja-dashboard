@@ -9,10 +9,10 @@ import {
   OverviewWithdrawalsDetailsType,
 } from '../../types/types.ts';
 
-interface userAuthSliceType {
+export interface userAuthSliceType {
   loading: boolean;
   appLoading: boolean;
-  userData: { user: UserType } | null;
+  userData: { user: UserType; token: string } | null;
   dashboardData: {
     accounts: OverviewAccountsDetailsType | null;
     purchases: OverviewPurchaseDetailsType | null;

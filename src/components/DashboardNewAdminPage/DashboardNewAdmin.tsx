@@ -24,6 +24,7 @@ export default function DashboardNewAdmin() {
       <div className=' bg-white xl:p-16 p-6 max-w-[1300px] mx-auto'>
         <CustomHeading level={2}>New Admin Data</CustomHeading>
         <Form
+          initialValues={{ lang: 'en' }}
           form={form}
           name='basic'
           layout='vertical'
@@ -124,7 +125,7 @@ export default function DashboardNewAdmin() {
           <Row gutter={16}>
             <Col xs={{ span: 12 }}>
               <Form.Item label='Language' name='lang'>
-                <Input disabled size='large' defaultValue={'en'} />
+                <Input disabled size='large' />
               </Form.Item>
             </Col>
             <Col xs={{ span: 12 }}>

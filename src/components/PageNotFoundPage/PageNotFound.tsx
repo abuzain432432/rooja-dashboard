@@ -4,7 +4,7 @@ import {
   toLeftAnimation,
   toRightAnimation,
   toTopAnimation,
-} from '../../animations/TextAnimations.ts';
+} from '../../animations/TextAnimations';
 
 import { useNavigate } from 'react-router-dom';
 import errorImage from '../../assets/images/404.svg';

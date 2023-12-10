@@ -116,7 +116,7 @@ export default function Sidebar() {
           >
             <div className='flex gap-2 items-center'>
               <TbBrandProducthunt />
-              <p> Fundings</p>
+              <p>Fundings</p>
             </div>
           </NavLink>
         </ProtectedComponents>

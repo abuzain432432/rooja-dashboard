@@ -12,7 +12,7 @@ import {
   fundingsDummyData,
   purchasesDummyData,
   withdrawalsDummyData,
-} from '../../mock/unit-test-data';
+} from '../../mocks/unit-test-data';
 import {
   DashboardAccountsFilterType,
   DashboardFeesFilterType,

@@ -14,8 +14,6 @@ import {
 export default function Error() {
   const error: any = useRouteError();
   const navigation = useNavigate();
-  console.log('error++++++++');
-  console.log(error.message);
 
   return (
     <div

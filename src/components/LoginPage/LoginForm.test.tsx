@@ -1,35 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { MemoryRouter } from 'react-router-dom';
-import { fireEvent, screen, waitFor } from '@testing-library/react';
-import LoginForm from './LoginForm.tsx';
-import userEvent from '@testing-library/user-event';
-import { renderWithProviders } from '../../test-utils.tsx';
-import { worker } from '../../../mock/browser.ts';
+import LoginForm from './LoginForm';
 
-worker.start();
+import { setupStore } from '../../store/store.ts';
+
+import {
+  render as renderWithProviders,
+  userEvent,
+  screen,
+  waitFor,
+  fireEvent,
+  act,
+} from '../../../utils/test-utils';
 
 describe('-----Unit Test for testing Loin Form-----', async () => {
   // await worker.start();
   test('renders LoginForm component', async () => {
-    renderWithProviders(
-      <MemoryRouter>
-        <LoginForm />
-      </MemoryRouter>
-    );
-    try {
-      const res = await fetch(
-        'https://roojaa-admin-proxy.dev.follomy.com/v1/accounts'
-      );
-      if (!res.ok) {
-        throw await res.json();
-      }
-      const data = await res.json();
-      console.log(data);
-      console.log('_______________________________');
-    } catch (error: any) {
-      console.log('erro++++++++++++++++++++++++++++++');
-      console.log(error);
-    }
+    const store = setupStore({});
+    renderWithProviders(<LoginForm />);
     const headingElement = screen.getByText(/welcome/i);
     const emailLabelElement = screen.getByLabelText(/email/i);
     const passwordLabelElement = screen.getByLabelText(/password/i);
@@ -42,88 +29,72 @@ describe('-----Unit Test for testing Loin Form-----', async () => {
     expect(submitButton).toBeInTheDocument();
   });
 
-  // test('shows validation errors when submitting with empty fields', async () => {
-  //   renderWithProviders(
-  //     <MemoryRouter>
-  //       <LoginForm />
-  //     </MemoryRouter>
-  //   );
+  test('shows validation errors when submitting with empty fields', async () => {
+    renderWithProviders(<LoginForm />);
 
-  //   const submitButton = screen.getByRole('button', {
-  //     name: /submit/i,
-  //   });
-  //   await userEvent.click(submitButton);
+    const submitButton = screen.getByRole('button', {
+      name: /submit/i,
+    });
+    await act(async () => {
+      await userEvent.click(submitButton);
+    });
 
-  //   await waitFor(() => {
-  //     const emailError = screen.getByText(/please input your email/i);
-  //     const passwordError = screen.getByText(
-  //       /Please input your password!/i
-  //     );
+    await waitFor(() => {
+      const emailError = screen.getByText(/please input your email/i);
+      const passwordError = screen.getByText(
+        /Please input your password!/i
+      );
 
-  //     expect(emailError).toBeInTheDocument();
-  //     expect(passwordError).toBeInTheDocument();
-  //   });
-  // });
-  // test('shows validation errors when submitting with invalid email and empty password field', async () => {
-  //   renderWithProviders(
-  //     <MemoryRouter>
-  //       <LoginForm />
-  //     </MemoryRouter>
-  //   );
+      expect(emailError).toBeInTheDocument();
+      expect(passwordError).toBeInTheDocument();
+    });
+  });
+  test('shows validation errors when submitting with invalid email and empty password field', async () => {
+    renderWithProviders(<LoginForm />);
 
-  //   const submitButton = screen.getByRole('button', {
-  //     name: /submit/i,
-  //   });
-  //   const emailLabelElement = screen.getByLabelText(/email/i);
+    const submitButton = screen.getByRole('button', {
+      name: /submit/i,
+    });
+    const emailLabelElement = screen.getByLabelText(/email/i);
 
-  //   fireEvent.change(emailLabelElement, {
-  //     target: { value: 'test12' },
-  //   });
+    fireEvent.change(emailLabelElement, {
+      target: { value: 'test12' },
+    });
 
-  //   await userEvent.click(submitButton);
-  //   await waitFor(() => {
-  //     const emailErrorElement = screen.queryByText(
-  //       /The input is not valid E-mail!/i
-  //     );
-  //     const passwordErrorElement = screen.queryByText(
-  //       /Please input your password!/i
-  //     );
-  //     expect(emailErrorElement).toBeInTheDocument();
-  //     expect(passwordErrorElement).toBeInTheDocument();
-  //   });
-  // });
+    await act(async () => {
+      await userEvent.click(submitButton);
+    });
+    // screen.logTestingPlaygroundURL();
+  });
 
-  // test('shows no  validation errors if credentails values are correct', async () => {
-  //   renderWithProviders(
-  //     <MemoryRouter>
-  //       <LoginForm />
-  //     </MemoryRouter>
-  //   );
+  test('shows no  validation errors if credentails values are correct', async () => {
+    renderWithProviders(<LoginForm />);
 
-  //   const submitButton = screen.getByText(/submit/i);
+    const submitButton = screen.getByText(/submit/i);
 
-  //   const passwordLabelElement = screen.getByLabelText(/password/i);
-  //   const emailLabelElement = screen.getByLabelText(/email/i);
+    const passwordLabelElement = screen.getByLabelText(/password/i);
+    const emailLabelElement = screen.getByLabelText(/email/i);
 
-  //   fireEvent.change(emailLabelElement, {
-  //     target: { value: 'testadmin@example.com' },
-  //   });
-  //   fireEvent.change(passwordLabelElement, {
-  //     target: { value: 'PasswordAdmin1234567890@@' },
-  //   });
-  //   // worker.use(invalidAuthHandler);
+    fireEvent.change(emailLabelElement, {
+      target: { value: 'testadmin@example.com' },
+    });
+    fireEvent.change(passwordLabelElement, {
+      target: { value: 'PasswordAdmin1234567890@@' },
+    });
 
-  //   await userEvent.click(submitButton);
+    await act(async () => {
+      await userEvent.click(submitButton);
+    });
 
-  //   await waitFor(() => {
-  //     const emailErrorElement = screen.queryByText(
-  //       /The input is not valid E-mail!/i
-  //     );
-  //     const passwordErrorElement = screen.queryByText(
-  //       /Please input your password!/i
-  //     );
-  //     expect(emailErrorElement).equals(null);
-  //     expect(passwordErrorElement).equals(null);
-  //   });
-  // });
+    await waitFor(() => {
+      const emailErrorElement = screen.queryByText(
+        /The input is not valid E-mail!/i
+      );
+      const passwordErrorElement = screen.queryByText(
+        /Please input your password!/i
+      );
+      expect(emailErrorElement).equals(null);
+      expect(passwordErrorElement).equals(null);
+    });
+  });
 });
