@@ -14,6 +14,7 @@ project is best option
 
 ### Overview Page
 
+![Project page](./readme-images/banner.png)
 ![Project page](./readme-images/1.PNG)
 
 ### Accounts Page
